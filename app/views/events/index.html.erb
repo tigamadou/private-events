@@ -1,0 +1,18 @@
+<h1>Events</h1>
+<% @events.each do |event| %>
+  <div class="card">
+  <div class="card-body">
+      <h3><%= event.name %></h3>
+      <p>
+          <%= event.description%>
+      </p>
+      <div class="badge badge-primary">
+          Venue: <%= event.venue %>
+      </div>
+      <div class="badge badge-success">
+          Date: <%= event.date %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
