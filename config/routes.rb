@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   resources :user, only: [:new,:show]
   post 'user/new', action:'create', controller:'user'
+
+  get 'sign_in', to: 'session#new'
+  post 'sign_in', to: 'session#create'
 end
