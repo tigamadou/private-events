@@ -1,4 +1,36 @@
 <%= render '/shared/navbar'%>
 
-<h1>This is the show page</h1>
+<h1>This is the User page</h1>
 
+<table class="table">
+
+    <tr>
+        <td>User Name:</td>
+        <td> <%= @user.username %></td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td> <%= @user.email %></td>
+    </tr>
+    <tr>
+        <td>Created at:</td>
+        <td> <%= @user.created_at %></td>
+    </tr>
+
+</table>
+<h2>Events</h2>
+
+<% @user.event.each do | event|%>
+    <div class="card">
+        <div class="card-body">
+            <h3><%= event.name %></h3>
+            <p>
+                <%= event.description%>
+            </p>
+            <div class="badge badge-primary">
+                Venue: <%= event.venue %>
+            </div>
+            <div class="badge badge-success">
+                Date: <%= event.date %>
+            </div>
+<% end %>

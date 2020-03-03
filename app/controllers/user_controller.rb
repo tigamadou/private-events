@@ -1,7 +1,7 @@
 class UserController < ApplicationController
     def new
         @user = User.new
-      end
+    end
     
     def create
         @user = User.new(user_params)
@@ -13,7 +13,7 @@ class UserController < ApplicationController
     end
 
     def show
-        @users = User.all
+        @user = User.find(params[:id])
     end
 
     private
