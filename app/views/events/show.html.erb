@@ -1,17 +1,22 @@
-<div class="card">
-<div class="card-body">
-    <h3><%= @event.name %></h3>
-    <div class="badge badge-primary">
-        Creator: <%= @event.creator.username %>
-    </div>
-    <p><%= @event.description%></p>
-    <hr>
-    <h4>Attendees <span class="badge badge-light"><%= @event.attendees.count %></span></h4>
+<%= render '/shared/navbar'%>
+<div class = "container">
 
-    <% @event.attendees.each do |attendee|%> 
-        <div class="badge badge-light">
-            <%= attendee.username %>
+
+    <div class="card">
+    <div class="card-body">
+        <h3><%= @event.name %></h3>
+        <div class="badge badge-primary">
+            Creator: <%= @event.creator.username %>
         </div>
-    <% end %>
-</div>
+        <p><%= @event.description%></p>
+        <hr>
+        <h4>Attendees <span class="badge badge-light"><%= @event.attendees.count %></span></h4>
+
+        <% @event.attendees.each do |attendee|%> 
+            <div class="badge badge-light">
+                <%= attendee.username %>
+            </div>
+        <% end %>
+    </div>
+    </div>
 </div>

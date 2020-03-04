@@ -1,38 +1,43 @@
-<h1>Events</h1>
+<%= render '/shared/navbar'%>
+<div class = "container">
 
-<h2>Past Events</h2>
-<% Event.past.each do |event| %>
-  <div class="card">
-  <div class="card-body">
-      <h3><%= event.name %></h3>
-      <p>
-          <%= event.description%>
-      </p>
-      <div class="badge badge-primary">
-          Venue: <%= event.venue %>
-      </div>
-      <div class="badge badge-success">
-          Date: <%= event.date %>
+
+  <h1>Events</h1>
+
+  <h2>Past Events</h2>
+  <% Event.past.each do |event| %>
+    <div class="card">
+    <div class="card-body">
+        <h3><%= event.name %></h3>
+        <p>
+            <%= event.description%>
+        </p>
+        <div class="badge badge-primary">
+            Venue: <%= event.venue %>
+        </div>
+        <div class="badge badge-success">
+            Date: <%= event.date %>
+        </div>
       </div>
     </div>
-  </div>
 
-<% end %>
+  <% end %>
 
-<h2>Upcoming</h2>
-<% Event.upcoming.each do |event| %>
-  <div class="card">
-  <div class="card-body">
-      <h3><%= event.name %></h3>
-      <p>
-          <%= event.description%>
-      </p>
-      <div class="badge badge-primary">
-          Venue: <%= event.venue %>
-      </div>
-      <div class="badge badge-success">
-          Date: <%= event.date %>
+  <h2>Upcoming</h2>
+  <% Event.upcoming.each do |event| %>
+    <div class="card">
+    <div class="card-body">
+        <h3><%= event.name %></h3>
+        <p>
+            <%= event.description%>
+        </p>
+        <div class="badge badge-primary">
+            Venue: <%= event.venue %>
+        </div>
+        <div class="badge badge-success">
+            Date: <%= event.date %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
