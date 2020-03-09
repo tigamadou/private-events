@@ -9,4 +9,12 @@ RSpec.describe 'Signing in a user', type: :feature do
     visit user_path(user)
     expect(page).to have_content('JohnDoe')
   end
+
+  scenario 'invalid user' do
+    visit sign_in_path
+    fill_in 'Username', with: 'Invalid Username'
+    click_on 'Sign In'
+    visit sign_in_path
+    expect(page).to have_content('Username')
+  end
 end
