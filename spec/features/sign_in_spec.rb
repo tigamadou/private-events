@@ -17,4 +17,5 @@ RSpec.describe 'Signing in a user', type: :feature do
     visit sign_in_path
     expect(page).to have_content('Username')
   end
+  
 end
