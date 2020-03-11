@@ -1,35 +1,46 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class = "container">
 
-
-        <a class="navbar-brand" href="#">Private Events</a>
+        <%= link_to "Private Events", root_path, class: "navbar-brand"%>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
     
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-            
-            <%= link_to "Home", user_path(current_user), class: "nav-link"%>
-            </li>
-            <li class="nav-item ">
-            
-            <%= link_to "Events", events_path, class: "nav-link"%>
-            </li>       
-        </ul>
-        <div class="form-inline my-2 my-lg-0">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= current_user.username %>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Logout</a>
-                <%= link_to "Sign Out",sign_out_path, class: "dropdown-item" %>
-                
+            <% if signed_in? %>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                    
+                    <%= link_to "Home", root_path, class: "nav-link"%>
+                    </li>
+                    <li class="nav-item ">
+                    
+                    <%= link_to "Events", events_path, class: "nav-link"%>
+                    </li>       
+                </ul>
+                <div class="form-inline my-2 my-lg-0">
+                    <div class="dropdown">
+                        
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= current_user.username %>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Logout</a>
+                        <%= link_to "Sign Out",sign_out_path, class: "dropdown-item", method: :delete  %>                        
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            <% else %>
+                <ul class="navbar-nav mr-auto">
+                       
+                </ul>
+                <div class=" my-2 my-lg-0">
+                    <li class="nav-item ">
+                            
+                    <%= link_to "Sign In", sign_in_path, class: "btn btn-primary"%>
+                    </li>  
+                </div>
+            <% end %>
         </div>
     </div>
 </nav>

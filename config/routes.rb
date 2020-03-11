@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  get 'events/new'
-  get 'events', to: 'events#index'
-  get 'events/:id', to: 'events#show'
-  post 'events/new', to: 'events#create'
+  root 'home#index'
+  resources :events
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :user, only: [:new,:show]
