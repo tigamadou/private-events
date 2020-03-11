@@ -1,1 +1,34 @@
-<h1>Home</h1>
+
+    <div class="container  has-text-centered">
+			<div class="columns">
+				<div class="column">
+					<section class="hero  is-fullheight  home-hero">
+						<div class="hero-body">
+							<div class="">
+
+								<h1 class="title  is-size-1">
+										Private Events
+									</h1>
+									<h2 class="subtitle">
+										A Simple Ruby On Rails App
+									</h2>
+									<% if signed_in? %>
+									<%= link_to "Go to Panel", user_path(current_user), class: "button  is-success is-large"%>
+									<%else%>
+									<%= link_to "Getting Started", sign_in_path, class: "button  is-danger is-large"%>
+									<%end%>
+							</div>
+						</div>
+					</section>
+				</div>
+				<div class="column">
+					<section class="hero is-fullheight  home-hero">
+  					<div class="hero-body">
+							<%= image_tag 'undraw_events_2p66.svg' %>
+						</div>
+					</section>
+				</div>
+			</div>
+     
+    </div>
+		

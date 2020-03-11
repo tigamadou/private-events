@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class=" has-background-light">
+  <head>
+    <title>PrivateEvents</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css">  
+
+  
+  </head>
+
+  <body>
+    <nav class="navbar is-white is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+      
+        <div class="navbar-brand">
+          <%= link_to "Private Events", root_path, class: "navbar-item"%>
+          
+
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <% if signed_in? %>
+              <%= link_to "Home", root_path, class: "navbar-item"%>
+              <%= link_to "Panel", user_path(current_user), class: "navbar-item"%>
+              <%= link_to "Events", events_path, class: "navbar-item"%>					
+            <% end %>
+          </div>
+
+          <div class="navbar-end">
+				<% if signed_in? %>
+					<div class="navbar-item has-dropdown is-hoverable">
+						<a class="navbar-link">
+							<%= current_user.username %>
+						</a>
+
+						<div class="navbar-dropdown">
+							<%= link_to "Sign Out",sign_out_path, class: "button is-danger", method: :delete  %>        
+							
+						</div>
+					</div>
+				<% else %>
+					<div class="navbar-item">
+						<div class="buttons">
+							<%= link_to "Sign In", sign_in_path, class: "button  is-outlined"%>
+							<%= link_to "Sign Up", new_user_path, class: "button is-danger "%>
+							
+						</div>
+					</div>
+
+				<% end %>
+			</div>
+        </div>
+      </div>
+    </nav>
+
+    <%= yield %>
+  
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+  </body>
+</html>

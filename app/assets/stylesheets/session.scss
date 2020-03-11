@@ -3,8 +3,16 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .alert-container{
     position: fixed;
-    top: 0px;
+    top: 50px;
     right: 0px;
     width: 100%;
     max-width: 300px;
+}
+
+.session-form{
+    max-width: 400px;
+    margin: auto;
+}
+.is-rounded{
+    border-radius: 10px;
 }

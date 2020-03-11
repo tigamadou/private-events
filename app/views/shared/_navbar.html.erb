@@ -1,46 +1,49 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class = "container">
+<nav class="navbar is-white " role="navigation" aria-label="main navigation">
+	<div class="container">
+	
+		<div class="navbar-brand">
+			<%= link_to "Private Events", root_path, class: "navbar-item"%>
+			
 
-        <%= link_to "Private Events", root_path, class: "navbar-brand"%>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <% if signed_in? %>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                    
-                    <%= link_to "Home", root_path, class: "nav-link"%>
-                    </li>
-                    <li class="nav-item ">
-                    
-                    <%= link_to "Events", events_path, class: "nav-link"%>
-                    </li>       
-                </ul>
-                <div class="form-inline my-2 my-lg-0">
-                    <div class="dropdown">
-                        
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <%= current_user.username %>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Logout</a>
-                        <%= link_to "Sign Out",sign_out_path, class: "dropdown-item", method: :delete  %>                        
-                        </div>
-                    </div>
-                </div>
-            <% else %>
-                <ul class="navbar-nav mr-auto">
-                       
-                </ul>
-                <div class=" my-2 my-lg-0">
-                    <li class="nav-item ">
-                            
-                    <%= link_to "Sign In", sign_in_path, class: "btn btn-primary"%>
-                    </li>  
-                </div>
-            <% end %>
-        </div>
-    </div>
+			<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+			</a>
+		</div>
+
+		<div id="navbarBasicExample" class="navbar-menu">
+			<div class="navbar-start">
+				<% if signed_in? %>
+					<%= link_to "Home", root_path, class: "navbar-item"%>
+					<%= link_to "Panel", user_path(current_user), class: "navbar-item"%>
+					<%= link_to "Events", events_path, class: "navbar-item"%>					
+				<% end %>
+			</div>
+
+			<div class="navbar-end">
+				<% if signed_in? %>
+					<div class="navbar-item has-dropdown is-hoverable">
+						<a class="navbar-link">
+							<%= current_user.username %>
+						</a>
+
+						<div class="navbar-dropdown">
+							<%= link_to "Sign Out",sign_out_path, class: "button is-danger", method: :delete  %>        
+							
+						</div>
+					</div>
+				<% else %>
+					<div class="navbar-item">
+						<div class="buttons">
+							<%= link_to "Sign In", sign_in_path, class: "button  is-outlined"%>
+							<%= link_to "Sign Up", new_user_path, class: "button is-danger "%>
+							
+						</div>
+					</div>
+
+				<% end %>
+			</div>
+		</div>
+	</div>
 </nav>

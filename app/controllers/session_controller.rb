@@ -1,4 +1,5 @@
 class SessionController < ApplicationController
+    before_action :is_signed_in, except: [:destroy]
     def new
     end
 
@@ -7,9 +8,10 @@ class SessionController < ApplicationController
         
         if user
             sign_in user
+            flash['is-success'] = "Welcome #{user.username}!"
             redirect_to user_path(user)
         else
-            flash.now['alert-danger'] = 'Wrong Username/password combination!'
+            flash.now['is-danger'] = 'Wrong Username!'
             render 'new'
         end
     end
