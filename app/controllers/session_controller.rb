@@ -1,4 +1,5 @@
 class SessionController < ApplicationController
+    layout 'home'
     before_action :is_signed_in, except: [:destroy]
     def new
     end

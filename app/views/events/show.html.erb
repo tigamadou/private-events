@@ -1,21 +1,64 @@
-<div class = "container">
 
 
-    <div class="card">
-    <div class="card-body">
-        <h3><%= @event.name %></h3>
-        <div class="badge badge-primary">
-            Creator: <%= @event.creator.username %>
+<section class="hero is-medium is-white home-hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-dark">
+        <%= @event.name %>
+      </h1>
+      <div class="subtitle has-text-dark">
+        <div>
+            
+            <%= @event.date.strftime("%Y/%m/%d") %> at <%= @event.venue %>
         </div>
-        <p><%= @event.description%></p>
-        <hr>
-        <h4>Attendees <span class="badge badge-light"><%= @event.attendees.count %></span></h4>
-
-        <% @event.attendees.each do |attendee|%> 
-            <div class="badge badge-light">
-                <%= attendee.username %>
+        <div>
+            By: <%= @event.creator.username %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="hero  ">
+  <div class="hero-body">
+    <div class="container">
+    
+        <div class="columns">
+        <div class="column is-8-desktop">
+                <div class="card">
+                    <div class="card-content">
+                    <div class="title">
+                        Description
+                    </div>
+                    <div class="content">
+                        <p><%= @event.description%></p>
+                    </div>
+                    </div>
+                </div>
+             
             </div>
-        <% end %>
+            
+            <div class="column">
+              <div class="card">
+                    <div class="card-content">
+                    <div class="title">
+                        Attendees <span class="tag is-light"><%= @event.attendees.count %></span>
+                    </div>
+                    <div class="content">
+                       <% @event.attendees.each do |attendee|%> 
+                            <div class="tag is-light">
+                                <%= attendee.username %>
+                            </div>
+                        <% end %>
+                    </div>
+                    </div>
+                </div>
+             
+            </div>
+            </div>
+            
+   
+       
     </div>
-    </div>
-</div>
+   
+  </div>
+</section>
