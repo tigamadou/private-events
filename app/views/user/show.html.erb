@@ -1,99 +1,177 @@
-<div class = "container">
-
-
-    <h1>This is the User page</h1>
-
-    <table class="table">
-
-        <tr>
-            <td>User Name:</td>
-            <td> <%= @user.username %></td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td> <%= @user.email %></td>
-        </tr>
-        <tr>
-            <td>Created at:</td>
-            <td> <%= @user.created_at %></td>
-        </tr>
-
-    </table>
-
-
-
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="true">Organized Events</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="attending-tab" data-toggle="tab" href="#attending" role="tab" aria-controls="attending" aria-selected="false">Attended Events </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="upcoming-tab" data-toggle="tab" href="#upcoming" role="tab" aria-controls="upcoming" aria-selected="false">Upcoming Events </a>
-    </li>
-    
-    </ul>
-    <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="events" role="tabpanel" aria-labelledby="events-tab">
-        <% @user.event.each do | event|%>
-            <div class="card border-light mb-3">
-                <div class="card-body">
-                    <h3><%= event.name %></h3>
-                    <p>
-                        <%= event.description%>
-                    </p>
-                    <div class="badge badge-primary">
-                        Venue: <%= event.venue %>
+<section class="hero is-info ">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Dahsboard
+      </h1>
+    </div>
+  </div>
+</section>
+<section class="hero  is-white">
+  <div class="hero-body">
+    <div class="container">
+        <div class="columns is-desktop">
+            <div class="column ">
+                <div class="columns">
+                    <div class="column is-mobile">
+                        <h2 class="title"> My Events <div class="tag"><%= current_user.event.count%></div> </h2>
                     </div>
-                    <div class="badge badge-success">
-                        Date: <%= event.date %>
+                    <div class="column is-mobile has-text-right">
+                        <%= link_to 'Create a new event', new_event_path,class: 'button is-primary ' %>
+                    </div>
+                </div>
+                
+                <div class="columns is-multiline event-list">
+                    <% current_user.event.each do |event| %>
+                    <div class="column is-12">
+                        <div class="card event">
+                        
+                            <div class="card-content">
+                                
+                                <div class="content">
+                                    <p class="title">
+                                        <%= event.name %>
+                                    </p>         
+                                <div class="subtitle is-size-6">
+                                    <strong><%= event.date.strftime("%Y/%m/%d") %> at <%= event.venue %></strong>
+                                    
+                                </div>
+                                <div class="has-text-right">
+
+                                        <%= link_to 'Read more', event_path( event),class: 'button is-link is-light is-small' %>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="column is-4-desktop">
+                <div class="card">
+                        
+                        <div class="card-content">
+                
+                        <div class="content">
+                            <table class="table ">
+
+                            <tr>
+                                <td>User Name:</td>
+                                <td> <%= @user.username %></td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td> <%= @user.email %></td>
+                            </tr>
+                            <tr>
+                                <td>Created at:</td>
+                                <td> <%= @user.created_at %></td>
+                            </tr>
+
+                        </table>
+                        </div>
+                        </div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+   
+  </div>
+</section>
+<div class="container">
+    <div class="columns">
+    <div class="column is-6-desktop">
+        <section class="hero  is-light">
+            <div class="hero-body">
+                <div class="content">
+                    <h2 class="title is-size-4"> Upcoming Events</h2>
+                    <div class="columns event-list">
+                    <% @upcoming_events.each do |event| %>
+                        <div class="column is-12-desktop">
+                            <div class="card event">
+                        
+                                <div class="card-content">
+                                    
+                                    <div class="content">
+                                        <p class="title">
+                                            <%= event.name %>
+                                        </p>         
+                                    <div class="subtitle is-size-6">
+                                        <strong><%= event.date.strftime("%Y/%m/%d") %> at <%= event.venue %></strong>
+                                    </div>
+                                        <div class="has-text-right">
+
+                                        <%= link_to 'Read more', event_path( event),class: 'button is-link is-light is-small' %>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    <% end %>
+
+                    <% if @upcoming_events.count ==0%>
+                        <div class="column">
+                            <article class="message">
+                                <div class="message-body">
+                                    You Have no Upcoming Events to attend!
+                                </div>
+                            </article>
+                        </div>
+                    <%end%>
                     </div>
                 </div>
             </div>
-        <% end %>
+        </section>
     </div>
-    <div class="tab-pane fade" id="attending" role="tabpanel" aria-labelledby="attending-tab">
-        
-                <% @prev_events.each do |event|%>
-                    <div class="card border-light mb-3">
-                        <div class="card-body">
-                            <h3><%= event.name %></h3>
-                            <p>
-                                <%= event.description%>
-                            </p>
-                            <div class="badge badge-primary">
-                                Venue: <%= event.venue %>
-                            </div>
-                            <div class="badge badge-success">
-                                Date: <%= event.date %>
-                            </div>
-                        </div>
-                    </div>
-                <% end %>
-        
-    </div>
+    <div class="column is-6-desktop">
+        <section class="hero is-small">
+            <div class="hero-body">
+            <div class="content">
+                <h2 class="title is-size-4"> Past Events</h2>
+                <div class="columns event-list">
+                <% @prev_events.each do |event| %>
+                    <div class="column is-12">
+                        <div class="card event">
+                        
+                            <div class="card-content">
+                            
+                                <div class="content">
+                                    <p class="title">
+                                        <%= event.name %>
+                                    </p>         
+                                    <div class="subtitle is-size-6">
+                                        <strong><%= event.date.strftime("%Y/%m/%d") %> at <%= event.venue %></strong>
+                                    </div>
+                                        <div class="has-text-right">
 
-    <div class="tab-pane fade" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
-        
-                <% @upcoming_events.each do |event|%>
-                    <div class="card border-light mb-3">
-                        <div class="card-body">
-                            <h3><%= event.name %></h3>
-                            <p>
-                                <%= event.description%>
-                            </p>
-                            <div class="badge badge-primary">
-                                Venue: <%= event.venue %>
+                                        <%= link_to 'Read more', event_path( event),class: 'button is-link is-light is-small' %>
+                                        </div>
+                                </div>
                             </div>
-                            <div class="badge badge-success">
-                                Date: <%= event.date %>
-                            </div>
+
                         </div>
                     </div>
                 <% end %>
-        
+                <% if @prev_events.count ==0%>
+                    <div class="column">
+                        <article class="message is-warning">
+                            <div class="message-body">
+                                You Have no attended Events.
+                            </div>
+                        </article>
+                    </div>
+                <%end%>
+                </div>
+            </div>
+            </div>
+        </section>
     </div>
-    
     </div>
 </div>
+
+
+
+

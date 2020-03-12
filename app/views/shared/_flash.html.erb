@@ -1,7 +1,7 @@
 <div class="alert-container">
   <% flash.each do |name, msg| %>
     <div class="notification <%= name %> fade show " role="alert">
-      <button class="delete"></button>
+      <button class="delete" data-target=""></button>
       <%= content_tag :strong, msg.html_safe %>
    
     </div>

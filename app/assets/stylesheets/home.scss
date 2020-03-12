@@ -16,3 +16,6 @@
     height: 80vh;
     display: flex!important;
 }
+.field_with_errors .input{
+    border-color: red;
+}

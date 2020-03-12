@@ -1,42 +1,127 @@
-<div class = "container">
-
-
-  <h1>Events</h1>
-
-  <h2>Past Events</h2>
-  <% Event.past.each do |event| %>
-    <div class="card">
-    <div class="card-body">
-        <h3><%= event.name %></h3>
-        <p>
-            <%= event.description%>
-        </p>
-        <div class="badge badge-primary">
-            Venue: <%= event.venue %>
+<section class="hero is-info ">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Events
+      </h1>
+    </div>
+  </div>
+</section>
+<section class="hero  is-white">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-desktop">
+          <h2 class="title">  Events <div class="tag"><%= current_user.event.count%></div> </h2>
         </div>
-        <div class="badge badge-success">
-            Date: <%= event.date %>
+        <div class="column is-desktop has-text-right">
+           <%= link_to 'Create a new event', new_event_path,class: 'button is-primary ' %>
         </div>
       </div>
-    </div>
+      
+      <div class="columns is-multiline">
+        <% Event.all.each do |event| %>
+          <div class="column is-12 is-4-desktop">
+            <div class="card event">
+                        
+                <div class="card-content">
+                    
+                    <div class="content">
+                        <p class="title">
+                            <%= event.name %>
+                        </p>         
+                    <div class="subtitle is-size-6">
+                        <strong><%= event.date.strftime("%Y/%m/%d") %> at <%= event.venue %></strong>
+                        
+                    </div>
+                    <div class="has-text-right">
 
-  <% end %>
+                            <%= link_to 'Read more', event_path( event),class: 'button is-link is-light is-small' %>
+                        </div>
+                    </div>
+                </div>
 
-  <h2>Upcoming</h2>
-  <% Event.upcoming.each do |event| %>
-    <div class="card">
-    <div class="card-body">
-        <h3><%= event.name %></h3>
-        <p>
-            <%= event.description%>
-        </p>
-        <div class="badge badge-primary">
-            Venue: <%= event.venue %>
-        </div>
-        <div class="badge badge-success">
-            Date: <%= event.date %>
-        </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-  <% end %>
+  </div>
+</section>
+<div class="container">
+  <div class="columns">
+    <div class="column is-6-desktop">
+      <section class="hero  is-light">
+        <div class="hero-body">
+          <div class="container">
+            <h2 class="title"> Upcoming Events</h2>
+            <div class="columns is-multiline">
+              <% Event.upcoming.each do |event| %>
+                <div class="column is-12-desktop">
+                  <div class="card event">
+                        
+                    <div class="card-content">
+                        
+                        <div class="content">
+                            <p class="title">
+                                <%= event.name %>
+                            </p>         
+                        <div class="subtitle is-size-6">
+                            <strong><%= event.date.strftime("%Y/%m/%d") %> at <%= event.venue %></strong>
+                            
+                        </div>
+                        <div class="has-text-right">
+
+                                <%= link_to 'Read more', event_path( event),class: 'button is-link is-light is-small' %>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="column is-6-desktop">
+      <section class="hero  is-light">
+        <div class="hero-body">
+          <div class="container">
+            <h2 class="title"> Past Events</h2>
+            <div class="columns is-multiline">
+              <% Event.past.each do |event| %>
+                <div class="column is-12-desktop">
+                  <div class="card event">
+                        
+                    <div class="card-content">
+                        
+                        <div class="content">
+                            <p class="title">
+                                <%= event.name %>
+                            </p>         
+                        <div class="subtitle is-size-6">
+                            <strong><%= event.date.strftime("%Y/%m/%d") %> at <%= event.venue %></strong>
+                            
+                        </div>
+                        <div class="has-text-right">
+
+                                <%= link_to 'Read more', event_path( event),class: 'button is-link is-light is-small' %>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </div>
+
+
+
