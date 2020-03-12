@@ -43,21 +43,20 @@ RSpec.feature 'Sessions', type: :feature do
        
       end
 
-      describe 'Log out the user', type: :feature do
+      describe 'log out ', type: :feature do
         before do
           visit sign_in_path
           fill_in 'Username', with: user.username
           click_button 'Sign In'
         end
     
-        context 'logged out the user' do
+        context 'log out the user' do
           before { 
                 expect(current_path).to eq user_path(user)    
                 click_on 'Sign Out' 
             }
           it 'go on the root page' do
             expect(current_path).to eq(root_path)
-
           end
         end
     end
