@@ -1,4 +1,4 @@
-# Re-Former
+# Private Events
 ![screenshot](./app/assets/images/home-screen.png)
 
 A site similar to a private Eventbrite which allows users to create events and then manage user signups. Events take place at a specific date and at a location
@@ -16,7 +16,7 @@ To get a local copy up and running follow these simple example steps.
 - git clone git@github.com:genzaraki/private-events/.git
 
 Then you browse to the folder and exucute the following commands
-- cd re-former
+- cd private-events
 - bundle install
 
 Thus run the migration
