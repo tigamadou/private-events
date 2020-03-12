@@ -7,8 +7,7 @@
         <%= @event.name %>
       </h1>
       <div class="subtitle has-text-dark">
-        <div>
-            
+        <div>            
             <%= @event.date.strftime("%Y/%m/%d") %> at <%= @event.venue %>
         </div>
         <div>
@@ -49,6 +48,15 @@
                                 <%= attendee.username %>
                             </div>
                         <% end %>
+                        <% if @event.attendees.count ==0%>
+                            <div class="column">
+                                <article class="message is-warning">
+                                    <div class="message-body">
+                                        There is not Attendees for this event yet.
+                                    </div>
+                                </article>
+                            </div>
+                        <%end%>
                     </div>
                     </div>
                 </div>

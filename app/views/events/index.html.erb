@@ -44,6 +44,15 @@
             </div>
           </div>
         <% end %>
+        <% if Event.all.count ==0%>
+            <div class="column">
+                <article class="message is-warning">
+                    <div class="message-body">
+                        There is no event yet.
+                    </div>
+                </article>
+            </div>
+        <%end%>
       </div>
     </div>
   </div>
@@ -80,6 +89,15 @@
                 </div>
                 </div>
               <% end %>
+              <% if Event.upcoming.count ==0%>
+                <div class="column">
+                    <article class="message is-warning">
+                        <div class="message-body">
+                            There is no upcoming events yet.
+                        </div>
+                    </article>
+                </div>
+              <%end%>
             </div>
           </div>
         </div>
@@ -115,6 +133,15 @@
                 </div>
                 </div>
               <% end %>
+              <% if Event.past.count ==0%>
+                <div class="column">
+                    <article class="message is-warning">
+                        <div class="message-body">
+                            There is no past events yet.
+                        </div>
+                    </article>
+                </div>
+              <%end%>
             </div>
           </div>
         </div>
