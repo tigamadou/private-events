@@ -9,10 +9,10 @@ class SessionController < ApplicationController
         
         if user
             sign_in user
-            flash['is-success'] = "Welcome #{user.username}!"
+            flash['is-success'] = "Hello #{user.username}!"
             redirect_to user_path(user)
         else
-            flash.now['is-danger'] = 'Wrong Username!'
+            flash.now['is-danger'] = 'Wrong Credentials!'
             render 'new'
         end
     end
