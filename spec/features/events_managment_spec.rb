@@ -1,21 +1,22 @@
 require 'rails_helper'
 
-RSpec.feature "EventsManagments", type: :feature do
-  
+RSpec.feature 'EventsManagments', type: :feature do
   let!(:user) do
     User.create(
-                username: 'amadou',
-                email: 'amadou@gmail.com',
-                password: '123456',
-                password_confirmation: '123456')
+      username: 'amadou',
+      email: 'amadou@gmail.com',
+      password: '123456',
+      password_confirmation: '123456'
+    )
   end
-  
+
   let!(:event) do
     Event.create(
-                name: 'Test Event',
-                description: 'A simple description',
-                date: '2020/05/25',
-                venue: 'White house')
+      name: 'Test Event',
+      description: 'A simple description',
+      date: '2020/05/25',
+      venue: 'White house'
+    )
   end
 
   scenario 'Event creation', type: :feature do
@@ -34,6 +35,4 @@ RSpec.feature "EventsManagments", type: :feature do
     expect(page).to have_text 'Event created!'
     expect(page).to have_text event.name
   end
-
-
 end

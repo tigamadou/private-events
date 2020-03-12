@@ -12,7 +12,7 @@
     <div class="container">
       <div class="columns">
         <div class="column is-desktop">
-          <h2 class="title">  Events <div class="tag"><%= current_user.event.count%></div> </h2>
+          <h2 class="title">  Events <div class="tag"><%= Event.all.count%></div> </h2>
         </div>
         <div class="column is-desktop has-text-right">
            <%= link_to 'Create a new event', new_event_path,class: 'button is-primary ' %>

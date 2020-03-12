@@ -10,37 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_161637) do
-
-  create_table "event_attendees", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "event_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_id"], name: "index_event_attendees_on_event_id"
-    t.index ["user_id"], name: "index_event_attendees_on_user_id"
+ActiveRecord::Schema.define(version: 20_200_304_161_637) do
+  create_table 'event_attendees', force: :cascade do |t|
+    t.integer 'user_id', null: false
+    t.integer 'event_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['event_id'], name: 'index_event_attendees_on_event_id'
+    t.index ['user_id'], name: 'index_event_attendees_on_user_id'
   end
 
-  create_table "events", force: :cascade do |t|
-    t.string "name"
-    t.datetime "date"
-    t.string "description"
-    t.string "venue"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_events_on_user_id"
+  create_table 'events', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'date'
+    t.string 'description'
+    t.string 'venue'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'user_id'
+    t.index ['user_id'], name: 'index_events_on_user_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
-    t.string "remember_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'username'
+    t.string 'email'
+    t.string 'password_digest'
+    t.string 'remember_digest'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  add_foreign_key "event_attendees", "events"
-  add_foreign_key "event_attendees", "users"
+  add_foreign_key 'event_attendees', 'events'
+  add_foreign_key 'event_attendees', 'users'
 end
