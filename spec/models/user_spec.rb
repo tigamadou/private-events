@@ -35,7 +35,7 @@ RSpec.describe User, type: :model do
   end
 
   context 'It has Associations' do
-    it { should have_many(:event) }
+    it { should have_many(:events) }
     it { should have_many(:event_attendees) }
   end
 end

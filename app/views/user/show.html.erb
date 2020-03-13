@@ -14,7 +14,7 @@
             <div class="column ">
                 <div class="columns">
                     <div class="column is-mobile">
-                        <h2 class="title"> My Events <div class="tag"><%= current_user.event.count%></div> </h2>
+                        <h2 class="title"> My Events <div class="tag"><%= current_user.events.count%></div> </h2>
                     </div>
                     <div class="column is-mobile has-text-right">
                         <%= link_to 'Create a new event', new_event_path,class: 'button is-primary ' %>
@@ -22,7 +22,7 @@
                 </div>
                 
                 <div class="columns is-multiline event-list">
-                    <% current_user.event.each do |event| %>
+                    <% current_user.events.each do |event| %>
                     <div class="column is-12">
                         <div class="card event">
                         
@@ -88,7 +88,7 @@
                 <div class="content">
                     <h2 class="title is-size-4"> Upcoming Events</h2>
                     <div class="columns event-list">
-                    <% @upcoming_events.each do |event| %>
+                    <% @upcoming.each do |event| %>
                         <div class="column is-12-desktop">
                             <div class="card event">
                         
@@ -112,7 +112,7 @@
                         </div>
                     <% end %>
 
-                    <% if @upcoming_events.count ==0%>
+                    <% if @upcoming.count ==0%>
                         <div class="column">
                             <article class="message">
                                 <div class="message-body">
@@ -132,7 +132,7 @@
             <div class="content">
                 <h2 class="title is-size-4"> Past Events</h2>
                 <div class="columns event-list">
-                <% @prev_events.each do |event| %>
+                <% @past.each do |event| %>
                     <div class="column is-12">
                         <div class="card event">
                         
@@ -155,7 +155,7 @@
                         </div>
                     </div>
                 <% end %>
-                <% if @prev_events.count ==0%>
+                <% if @past.count ==0%>
                     <div class="column">
                         <article class="message is-warning">
                             <div class="message-body">
