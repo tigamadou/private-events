@@ -1,6 +1,7 @@
 class UserController < ApplicationController
+  
   def new
-    layout 'home'
+    
     @user = User.new
   end
 
