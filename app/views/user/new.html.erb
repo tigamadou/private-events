@@ -1,0 +1,67 @@
+
+    <div class="container  ">
+			<div class="columns">
+        <div class="column">
+					<section class="hero is-fullheight  ">
+  					<div class="hero-body">
+							<%= image_tag 'undraw_online_calendar_kvu2.svg' %>
+						</div>
+					</section>
+				</div>
+				<div class="column">
+					<section class="hero  is-fullheight  ">
+						<div class="hero-body">
+							<div class="container">
+                <div class="session-form">
+                      <div class="card is-rounded">
+                        <div class="card-content">
+                          <%= render '/shared/form_errors'%>
+                          <h1 class="title">Sign Up</h1>        
+                            <%= form_for(:user) do |f| %>
+                              
+                              <div class = "field">
+                                <%= f.label :username, class: 'label'  %>
+                                <div class="control">
+                                  <%= f.text_field :username, class: 'input' %>
+                                </div>
+                              </div>
+
+                              <div class = "field">
+                                <%= f.label :email, class: 'label'  %>
+                                <div class="control">
+                                  <%= f.email_field :email, class: 'input' %>
+                                </div>
+                              </div>
+                            
+                              <div class = "field">
+                                <%= f.label :password, class: 'label' %>
+                                <div class="control">
+                                  <%= f.password_field :password, class: 'input' %>
+                                </div>
+                              </div>
+                              
+                              <div class = "field">
+                                <%= f.label :password_confirmation, "Confirmation",class:'label' %>
+                                <div class="control">
+                                  
+                                  <%= f.password_field :password_confirmation, class: 'input' %><br />
+                                </div>
+                              </div>
+
+                              <div class="field">
+
+                              <%= f.submit "Create my account", class: "button is-primary is-block" %>
+                              </div>
+                              
+                            <% end %>
+                        </div>
+                      </div>
+                    </div>
+							</div>
+						</div>
+					</section>
+				</div>
+				
+			</div>
+     
+    </div>

@@ -1,0 +1,72 @@
+
+
+<section class="hero is-medium is-white home-hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-dark">
+        <%= @event.name %>
+      </h1>
+      <div class="subtitle has-text-dark">
+        <div>            
+            <%= @event.date.strftime("%Y/%m/%d") %> at <%= @event.venue %>
+        </div>
+        <div>
+            By: <%= @event.creator.username %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="hero  ">
+  <div class="hero-body">
+    <div class="container">
+    
+        <div class="columns">
+        <div class="column is-8-desktop">
+                <div class="card">
+                    <div class="card-content">
+                    <div class="title">
+                        Description
+                    </div>
+                    <div class="content">
+                        <p><%= @event.description%></p>
+                    </div>
+                    </div>
+                </div>
+             
+            </div>
+            
+            <div class="column">
+              <div class="card">
+                    <div class="card-content">
+                    <div class="title">
+                        Attendees <span class="tag is-light"><%= @event.attendees.count %></span>
+                    </div>
+                    <div class="content">
+                       <% @event.attendees.each do |attendee|%> 
+                            <div class="tag is-light">
+                                <%= attendee.username %>
+                            </div>
+                        <% end %>
+                        <% if @event.attendees.count ==0%>
+                            <div class="column">
+                                <article class="message is-warning">
+                                    <div class="message-body">
+                                        There is not Attendees for this event yet.
+                                    </div>
+                                </article>
+                            </div>
+                        <%end%>
+                    </div>
+                    </div>
+                </div>
+             
+            </div>
+            </div>
+            
+   
+       
+    </div>
+   
+  </div>
+</section>
